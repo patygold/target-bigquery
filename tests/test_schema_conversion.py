@@ -452,3 +452,9 @@ class TestSchemaConversion(unittestcore.BaseUnitTest):
         compare_old_vs_new_schema_conversion(os.path.join(os.path.join(
             os.path.join(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tests"), "rsc"),
             "schemas"), "input_json_schemas_shopify.json"))
+
+    def test_several_nested_schemas_quickbooks(self):
+
+        compare_old_vs_new_schema_conversion(os.path.join(os.path.join(
+            os.path.join(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "tests"), "rsc"),
+            "schemas"), "input_json_schemas_quickbooks.json"))

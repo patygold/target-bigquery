@@ -1,0 +1,490 @@
+{
+      "stream": "Invoice",
+      "tap_stream_id": "Invoice",
+      "schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "AllowIPNPayment": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "AllowOnlinePayment": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "AllowOnlineCreditCardPayment": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "AllowOnlineACHPayment": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "Id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "MetaData": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "CustomField": {
+            "type": "array",
+            "items": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "DefinitionId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "Name": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "Type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "StringValue": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "DocNumber": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "TxnDate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            ]
+          },
+          "CurrencyRef": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "CustomerRef": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Line": {
+            "type": "array",
+            "items": {
+              "type": [
+                "null",
+                "object"
+              ],
+              "properties": {
+                "Id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "LineNum": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "Amount": {
+                  "type": [
+                    "null",
+                    "number"
+                  ]
+                },
+                "DetailType": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "SalesItemLineDetail": {
+                  "type": [
+                    "null",
+                    "object"
+                  ],
+                  "properties": {
+                    "ItemRef": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "ItemAccountRef": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "TaxCodeRef": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "Qty": {
+                      "type": [
+                        "null",
+                        "number"
+                      ]
+                    },
+                    "UnitPrice": {
+                      "type": [
+                        "null",
+                        "number"
+                      ]
+                    }
+                  }
+                },
+                "SubTotalLineDetail": {
+                  "type": [
+                    "null",
+                    "object"
+                  ]
+                },
+                "DiscountLineDetail": {
+                  "type": [
+                    "null",
+                    "object"
+                  ],
+                  "properties": {
+                    "DiscountAccountRef": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "FreeFormAddress": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "ShipFromAddr": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "DueDate": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            ]
+          },
+          "TotalAmt": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "ApplyTaxAfterDiscount": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "PrintStatus": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "Balance": {
+            "type": [
+              "null",
+              "number"
+            ]
+          }
+        }
+      },
+      "metadata": [
+        {
+          "breadcrumb": [
+            "properties",
+            "AllowIPNPayment"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AllowOnlinePayment"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AllowOnlineCreditCardPayment"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "AllowOnlineACHPayment"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Id"
+          ],
+          "metadata": {
+            "inclusion": "automatic",
+            "selected-by-default": true,
+            "selected": true
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "MetaData"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "CustomField"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DocNumber"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TxnDate"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "CurrencyRef"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "CustomerRef"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Line"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "FreeFormAddress"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ShipFromAddr"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "DueDate"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "TotalAmt"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": true
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "ApplyTaxAfterDiscount"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "PrintStatus"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "Balance"
+          ],
+          "metadata": {
+            "inclusion": "available",
+            "selected-by-default": true,
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [
+            "properties",
+            "MetaData.LastUpdatedTime"
+          ],
+          "metadata": {
+            "inclusion": "automatic",
+            "selected": false
+          }
+        },
+        {
+          "breadcrumb": [],
+          "metadata": {
+            "valid-replication-keys": [
+              "MetaData.LastUpdatedTime"
+            ],
+            "table-key-properties": [
+              "Id"
+            ],
+            "selected": true
+          }
+        }
+      ],
+      "selected": true
+    }
