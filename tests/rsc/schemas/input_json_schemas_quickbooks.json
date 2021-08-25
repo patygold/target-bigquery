@@ -1,4 +1,6 @@
 {
+  "streams": [
+{
       "stream": "Invoice",
       "tap_stream_id": "Invoice",
       "schema": {
@@ -488,3 +490,5 @@
       ],
       "selected": true
     }
+
+    ]}
