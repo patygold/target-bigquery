@@ -140,6 +140,7 @@ class LoadJobProcessHandler(BaseProcessHandler):
             project=self.project_id,
             location=kwargs.get("location", "US")
         )
+        self.allow_field_addition = kwargs.get(allow_field_addition, False)
 
     def handle_schema_message(self, msg):
         for s in super(LoadJobProcessHandler, self).handle_schema_message(msg):
@@ -223,7 +224,8 @@ class LoadJobProcessHandler(BaseProcessHandler):
                     # key_props=self.key_properties[stream],
                     # metadata_columns=self.add_metadata_columns,
                     truncate=True,
-                    rows=self.rows[stream]
+                    rows=self.rows[stream],
+                    allow_field_addition=self.allow_field_addition
                 )
 
                 loaded_tmp_tables.append((stream, tmp_table_name))
@@ -266,7 +268,8 @@ class LoadJobProcessHandler(BaseProcessHandler):
                     # key_props,
                     # metadata_columns,
                     truncate,
-                    rows):
+                    rows,
+                    allow_field_addition=False):
         """
         Load data to BigQuery
 
@@ -277,6 +280,7 @@ class LoadJobProcessHandler(BaseProcessHandler):
         :param table_config, dict:
         :param truncate, bool: determines if we append or truncate (FULL_TABLE replication)
         :param rows, _TemporaryFileWrapper:
+        :param allow_field_addition, bool: determines if we should allow adding a nullable field to the schema.
         :return:
         """
         logger = self.logger
@@ -301,6 +305,12 @@ class LoadJobProcessHandler(BaseProcessHandler):
         # clusteing
         if cluster_fields:
             load_config.clustering_fields = cluster_fields
+
+        # Schema update options
+        if allow_field_addition:
+            load_config.schema_update_options = [
+                bigquery.job.SchemaUpdateOption.ALLOW_FIELD_ADDITION
+            ]
 
         load_config.source_format = SourceFormat.NEWLINE_DELIMITED_JSON
 

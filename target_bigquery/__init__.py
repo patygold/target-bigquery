@@ -58,6 +58,7 @@ def main():
     location = config.get("location", "US")
     validate_records = config.get("validate_records", True)
     add_metadata_columns = config.get("add_metadata_columns", True)
+    allow_field_addition = config.get("allow_field_addition", False)
     project_id, dataset_id = config["project_id"], config["dataset_id"]
 
     table_configs = tables.get("streams", {})
@@ -96,7 +97,8 @@ def main():
             table_suffix=table_suffix,
             add_metadata_columns=add_metadata_columns,
             table_configs=table_configs,
-            max_cache=max_cache
+            max_cache=max_cache,
+            allow_field_addition=allow_field_addition,
         )
 
         # write a state file

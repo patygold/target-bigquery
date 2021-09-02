@@ -28,6 +28,7 @@ def process(
             - location
             - truncate
             - validate_records
+            - allow_field_addition
             ...
 
     :return: state, State
