@@ -140,7 +140,7 @@ class LoadJobProcessHandler(BaseProcessHandler):
             project=self.project_id,
             location=kwargs.get("location", "US")
         )
-        self.allow_field_addition = kwargs.get(allow_field_addition, False)
+        self.allow_field_addition = kwargs.get("allow_field_addition", False)
 
     def handle_schema_message(self, msg):
         for s in super(LoadJobProcessHandler, self).handle_schema_message(msg):
@@ -223,7 +223,7 @@ class LoadJobProcessHandler(BaseProcessHandler):
                     table_config=self.table_configs.get(stream, {}),
                     # key_props=self.key_properties[stream],
                     # metadata_columns=self.add_metadata_columns,
-                    truncate=True,
+                    truncate=self.truncate,
                     rows=self.rows[stream],
                     allow_field_addition=self.allow_field_addition
                 )
@@ -269,7 +269,7 @@ class LoadJobProcessHandler(BaseProcessHandler):
                     # metadata_columns,
                     truncate,
                     rows,
-                    allow_field_addition=False):
+                    allow_field_addition):
         """
         Load data to BigQuery
 
@@ -302,15 +302,9 @@ class LoadJobProcessHandler(BaseProcessHandler):
                 field=partition_field
             )
 
-        # clusteing
+        # clustering
         if cluster_fields:
             load_config.clustering_fields = cluster_fields
-
-        # Schema update options
-        if allow_field_addition:
-            load_config.schema_update_options = [
-                bigquery.job.SchemaUpdateOption.ALLOW_FIELD_ADDITION
-            ]
 
         load_config.source_format = SourceFormat.NEWLINE_DELIMITED_JSON
 
@@ -321,6 +315,11 @@ class LoadJobProcessHandler(BaseProcessHandler):
         else:
             logger.info(f"Appending to {table_name}")
             load_config.write_disposition = WriteDisposition.WRITE_APPEND
+            # Schema update options
+            if allow_field_addition:
+                load_config.schema_update_options = [
+                    bigquery.job.SchemaUpdateOption.ALLOW_FIELD_ADDITION
+                ]
 
         logger.info("loading {} to BigQuery".format(table_name))
 
